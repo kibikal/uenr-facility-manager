@@ -3,7 +3,7 @@ import { Breadcrumbs, Link, Stack, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react'
 
-export const Content = () => {
+export const Content = (props) => {
 
   const handleClick = ()=>{}
 
@@ -31,7 +31,7 @@ export const Content = () => {
      </Typography>,
    ];
   return (
-    <Box flex={0.9}>
+    <Box flex={ props.openMenu ? 0.9 : 1}>
       <Stack direction="column">
         <Breadcrumbs
           separator={<NavigateNext fontSize="medium" color="primary" />}
@@ -45,7 +45,9 @@ export const Content = () => {
           {breadcrumbs}
         </Breadcrumbs>
 
-        
+        <Stack direction="row">
+
+        </Stack>
       </Stack>
     </Box>
   );

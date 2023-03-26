@@ -6,6 +6,7 @@ import {
   Home,
   KeyboardDoubleArrowLeft,
   Logout,
+  Menu,
 } from "@mui/icons-material";
 import {
   Avatar,
@@ -27,19 +28,20 @@ const Logo = styled("img")({
   width: "90%",
 });
 
-export const Sidebar = () => {
+export const Sidebar = (props) => {
   const StyledListItemText = styled(ListItemText)({
     color: "#555",
   });
 
-
-  return (
+  return props.openMenu ? (
     <Box
       flex={0.1}
       p={0}
       bgcolor="primary.light"
       color="secondary"
       minHeight="100vh"
+      display={props.openMenu ? "block" : "none"}
+      sx={{ transition: "display 2s" }}
     >
       <Stack direction="column" p="0,2" spacing={2}>
         <Logo src={uenrLogo} alt="uenr-logo" />
@@ -96,6 +98,7 @@ export const Sidebar = () => {
 
         <IconButton
           sx={{ width: "100%", borderRadius: "0", marginTop: "10px" }}
+          onClick={props.onClick}
         >
           <KeyboardDoubleArrowLeft />
           <Typography>Close Menu</Typography>
@@ -139,6 +142,21 @@ export const Sidebar = () => {
           </ListItemButton>
         </ListItem>
       </List>
+    </Box>
+  ) : (
+    <Box
+      onClick={() => {
+        props.setOpenMenu(true);
+      }}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "0px 10px 0px 5px",
+      }}
+      bgcolor="secondary.main"
+    >
+      <Menu sx={{ color: "#fff", fontSize: "2rem" }} />
     </Box>
   );
 };
