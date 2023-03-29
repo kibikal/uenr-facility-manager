@@ -1,15 +1,17 @@
 import {
-  AddHomeWork,
-  AdminPanelSettings,
+  AccountCircle,
   Campaign,
   CheckCircle,
+  Dashboard,
   Home,
   KeyboardDoubleArrowLeft,
   Logout,
   Menu,
+  PendingActions,
 } from "@mui/icons-material";
 import {
   Avatar,
+  Divider,
   IconButton,
   List,
   ListItem,
@@ -20,17 +22,14 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import uenrLogo from "../../assets/uenr-logo.png";
+
 import { Box } from "@mui/system";
 import React from "react";
 
-const Logo = styled("img")({
-  width: "90%",
-});
 
 export const Sidebar = (props) => {
   const StyledListItemText = styled(ListItemText)({
-    color: "#555",
+    color: "#F6F9F9F6",
   });
 
   return props.openMenu ? (
@@ -44,9 +43,20 @@ export const Sidebar = (props) => {
       sx={{ transition: "display 2s" }}
     >
       <Stack direction="column" p="0,2" spacing={2}>
-        <Logo src={uenrLogo} alt="uenr-logo" />
-        <Typography variant="h6" sx={{ fontWeight: "700", color: "#fff" }}>
-          Facility Manager
+        <Divider />
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: "700",
+            color: "#fff",
+            display: "flex",
+            alignItems: "center",
+            gap: "5px",
+            padding: "0 5px",
+          }}
+        >
+          <Dashboard />
+          Dashboard
         </Typography>
       </Stack>
 
@@ -54,7 +64,7 @@ export const Sidebar = (props) => {
         <ListItem disablePadding>
           <ListItemButton component="a" href="#home">
             <ListItemIcon>
-              <AdminPanelSettings sx={{ color: "secondary.main" }} />
+              <AccountCircle sx={{ color: "#F6F9F9F6" }} />
             </ListItemIcon>
             <StyledListItemText primary="Profile" />
           </ListItemButton>
@@ -63,7 +73,7 @@ export const Sidebar = (props) => {
         <ListItem disablePadding>
           <ListItemButton component="a" href="#home">
             <ListItemIcon>
-              <Home sx={{ color: "secondary.main" }} />
+              <Home sx={{ color: "#F6F9F9F6" }} />
             </ListItemIcon>
             <StyledListItemText primary="Facilities" />
           </ListItemButton>
@@ -72,32 +82,37 @@ export const Sidebar = (props) => {
         <ListItem disablePadding>
           <ListItemButton component="a" href="#home">
             <ListItemIcon>
-              <AddHomeWork sx={{ color: "secondary.main" }} />
-            </ListItemIcon>
-            <StyledListItemText primary="Add Facility" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="#home">
-            <ListItemIcon>
-              <Campaign sx={{ color: "secondary.main" }} />
-            </ListItemIcon>
-            <StyledListItemText primary="Announcements" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="#home">
-            <ListItemIcon>
-              <CheckCircle sx={{ color: "secondary.main" }} />
+              <CheckCircle sx={{ color: "#F6F9F9F6" }} />
             </ListItemIcon>
             <StyledListItemText primary="Approve Facilities" />
           </ListItemButton>
         </ListItem>
 
+        <ListItem disablePadding>
+          <ListItemButton component="a" href="#home">
+            <ListItemIcon>
+              <PendingActions sx={{ color: "#F6F9F9F6" }} />
+            </ListItemIcon>
+            <StyledListItemText primary="Schedules" />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding>
+          <ListItemButton component="a" href="#home">
+            <ListItemIcon>
+              <Campaign sx={{ color: "#F6F9F9F6" }} />
+            </ListItemIcon>
+            <StyledListItemText primary="Announcements" />
+          </ListItemButton>
+        </ListItem>
+
         <IconButton
-          sx={{ width: "100%", borderRadius: "0", marginTop: "10px" }}
+          sx={{
+            width: "100%",
+            borderRadius: "0",
+            marginTop: "10px",
+            color: "#F6F9F9F6",
+          }}
           onClick={props.onClick}
         >
           <KeyboardDoubleArrowLeft />
@@ -127,8 +142,8 @@ export const Sidebar = (props) => {
             sx={{ padding: "0 5px", textAlign: "left" }}
           >
             <Typography color="#fff">Kibikal Nimoak</Typography>
-            <Typography variant="body2" fontWeight={100} color="#555">
-              view profile
+            <Typography variant="body2" fontWeight={100} color="#F6F9F9F6">
+              view profile...
             </Typography>
           </Stack>
         </Stack>
@@ -145,18 +160,22 @@ export const Sidebar = (props) => {
     </Box>
   ) : (
     <Box
-      onClick={() => {
-        props.setOpenMenu(true);
-      }}
       sx={{
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
         padding: "0px 10px 0px 5px",
+        height: "100vh",
       }}
-      bgcolor="secondary.main"
+      bgcolor="primary.main"
     >
-      <Menu sx={{ color: "#fff", fontSize: "2rem" }} />
+      <Menu
+        onClick={() => {
+          props.setOpenMenu(true);
+        }}
+        sx={{ color: "#fff", cursor: "pointer", fontSize: "2.3rem" }}
+      />
     </Box>
   );
 };

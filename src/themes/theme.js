@@ -2,14 +2,14 @@ import { createTheme } from "@mui/material";
 
 const globalTheme = createTheme({
   palette: {
-    primary: {
-      main: "#38E54D",
-    },
+    primary: { main: "#712121" },
     secondary: {
-      main: "#632626",
+      main: "#38E54D",
       light: "#d7ccc8",
     },
-    grayText: "#dd2c00",
+    white: {
+      main: "#fff",
+    },
   },
 });
 

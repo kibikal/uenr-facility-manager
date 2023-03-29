@@ -17,6 +17,7 @@ export const AdminDashBoard = () => {
             setOpenMenu ={setOpenMenu}
           /> 
         <Content openMenu={openMenu}/>
+       
       </Stack>
     </Box>
   );
